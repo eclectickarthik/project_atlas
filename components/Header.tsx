@@ -39,6 +39,39 @@ export default function Header({
           <p className="mt-2 text-sm text-zinc-400">
             Browse today's top Hacker News stories.
           </p>
+
+          <div className="mt-3 flex items-center gap-4 text-sm">
+            <a
+              href="https://github.com/eclectickarthik/project_atlas/blob/main/Roadmap.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-500 transition-colors hover:text-[#ff6600]"
+            >
+              Roadmap
+            </a>
+
+            <span className="text-zinc-700">•</span>
+
+            <a
+              href="https://github.com/eclectickarthik/project_atlas"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-500 transition-colors hover:text-[#ff6600]"
+            >
+              GitHub
+            </a>
+
+            <span className="text-zinc-700">•</span>
+
+            <a
+              href="https://github.com/eclectickarthik/project_atlas/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-500 transition-colors hover:text-[#ff6600]"
+            >
+              Releases
+            </a>
+          </div>
         </div>
 
         <Button
