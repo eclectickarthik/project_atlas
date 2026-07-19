@@ -1,14 +1,6 @@
-# 🗺️ Project Atlas
+# 🗺️ Project Atlas Roadmap
 
-## Roadmap
-
-> **Progress:** Phase 1 — MVP is complete. Phase 2 is planned, with Phase 3 outlining the longer-term vision.
-
----
-
-## ✅ Phase 1 — MVP
-
-_Completed_
+## ✅ Phase 1 — MVP (Completed)
 
 ### Core Infrastructure
 
@@ -58,16 +50,16 @@ _Completed_
 
 ---
 
-## 🚀 Phase 2 — Planned
+# 🚀 Phase 2 — Planned
 
-### Feed Improvements
+## Feed Improvements
 
 - [ ] Auto-sync when cache becomes stale (e.g. every 5–10 minutes)
 - [ ] Background sync without blocking UI
 - [ ] Show "Checking for updates..." while syncing
 - [ ] Better sync status indicator
 
-### Hacker News Categories
+## Hacker News Categories
 
 - [ ] Top Stories
 - [ ] New Stories
@@ -76,21 +68,21 @@ _Completed_
 - [ ] Show HN
 - [ ] Jobs
 
-### Reading Experience
+## Reading Experience
 
 - [ ] Bookmarks
 - [ ] Reading history
 - [ ] Recently viewed stories
 - [ ] Open article in reader mode
 
-### AI Features
+## AI Features
 
 - [ ] AI article summaries
 - [ ] AI discussion summaries
 - [ ] Explain article in simple language
 - [ ] Key takeaways
 
-### Search & Discovery
+## Search & Discovery
 
 - [ ] Advanced search
 - [ ] Filter by domain
@@ -98,14 +90,14 @@ _Completed_
 - [ ] Filter by score
 - [ ] Sort options
 
-### Analytics
+## Analytics
 
 - [ ] Trending domains
 - [ ] Trending authors
 - [ ] Reading statistics
 - [ ] Most viewed stories
 
-### UI Polish
+## UI Polish
 
 - [ ] Keyboard shortcuts
 - [ ] Theme customization
@@ -116,7 +108,7 @@ _Completed_
 
 ---
 
-## 🌟 Phase 3 — Vision
+# 🌟 Phase 3 — Vision
 
 - [ ] User accounts
 - [ ] Personal reading lists
@@ -128,37 +120,3 @@ _Completed_
 - [ ] Recommendation engine
 - [ ] Daily digest
 - [ ] Developer API
-
----
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-- [Next.js Documentation](https://nextjs.org/docs) — learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) — an interactive Next.js tutorial.
-- [Next.js GitHub repository](https://github.com/vercel/next.js) — feedback and contributions are welcome.
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
