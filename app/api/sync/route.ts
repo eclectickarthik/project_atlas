@@ -3,13 +3,16 @@ import { NextResponse } from "next/server";
 
 const STORIES_TO_SYNC = 100;
 
-export async function GET() {
+type HNStory = { id: number; rank: number; title: string; by: string; type: string; url?: string; text?: string; score?: number; descendants?: number; time: number; deleted?: boolean; dead?: boolean };
+
+export async function POST() {
   try {
     // Step 1: Fetch latest Hacker News story IDs
     const response = await fetch(
       "https://hacker-news.firebaseio.com/v0/topstories.json",
       {
         cache: "no-store",
+        signal: AbortSignal.timeout(15000),
       },
     );
 
@@ -29,6 +32,7 @@ export async function GET() {
           `https://hacker-news.firebaseio.com/v0/item/${storyId}.json`,
           {
             cache: "no-store",
+        signal: AbortSignal.timeout(15000),
           },
         );
 
@@ -37,6 +41,7 @@ export async function GET() {
         }
 
         const story = await response.json();
+        if (!story || story.deleted || story.dead || typeof story.id !== "number" || typeof story.title !== "string" || typeof story.by !== "string" || typeof story.time !== "number") throw new Error("Invalid story");
 
         return {
           ...story,
@@ -48,11 +53,17 @@ export async function GET() {
     // Step 4: Keep only successful fetches
     const stories = storyResults
       .filter(
-        (result): result is PromiseFulfilledResult<Record<string, any>> =>
+        (result): result is PromiseFulfilledResult<HNStory> =>
           result.status === "fulfilled",
       )
       .map((result) => result.value);
 
+    if (stories.length !== latestStoryIds.length || stories.length === 0) {
+      throw new Error("Incomplete feed; preserving existing stories for retry");
+    }
+
+    // Replace the ranked snapshot atomically so old ranks never leak into the feed.
+    await prisma.$transaction(async (prisma) => {
     // Step 5: Save stories to PostgreSQL
     await Promise.all(
       stories.map((story) =>
@@ -100,6 +111,9 @@ export async function GET() {
         lastSynced: new Date(),
       },
     });
+
+    await prisma.story.deleteMany({ where: { id: { notIn: stories.map(story => story.id) } } });
+    }, { timeout: 30000 });
 
     return NextResponse.json({
       success: true,
